@@ -1,0 +1,32 @@
+services:
+  whisper-subtitles:
+    build: ./whisper-build
+    # runtime: rocm  # Используем ROCm runtime
+    environment:
+      - DEVICE=cpu  # или cuda:0
+      - MODEL_SIZE=medium.en  # Модель Whisper (можно изменить на small.en, large-v3 и т. д.)
+      - INPUT_DIR=/input  # Папка с видеофайлами
+      - AUDIO_TRACK_NUMBER=0 # номер извлекаемой звуковой дорожки (zero-based)
+      - CACHE_DIR=/cache # путь к кешу моделей. лучше не менять
+      - SKIP_IF_EXISTS=True # не создавать субтитры, если файл субтитров уже существуют
+    volumes:
+      - /mnt/work/temp/for-subtitles:/input  # Монтируем папку с видео
+      - whisper-cache:/cache  # Кеш моделей на хосте
+    devices:
+      - /dev/kfd  # Необходимо для ROCm
+      - /dev/dri
+    stdin_open: true
+    tty: true
+    
+    # Ниже идут параметры, скомпилированные из командной строки запуска docker со страницы https://hub.docker.com/r/rocm/pytorch
+    group_add:
+      - 44 # добавить группу video
+    ipc: host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - "seccomp:unconfined"
+    shm_size: '8gb'
+
+volumes:
+  whisper-cache:

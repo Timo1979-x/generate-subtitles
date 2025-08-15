@@ -1,0 +1,7 @@
+{
+  "type": "playground",
+  "tags": "docker,AI,python",
+  "name": "Создание субтитров для видео с помощью ИИ (openai whisper)",
+  "comment": "",
+  "href": [""]
+}
