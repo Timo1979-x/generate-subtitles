@@ -1,0 +1,772 @@
+1
+00:00:00,000 --> 00:00:07,080
+After introducing virtual thread as part of Java 21, for some reason this has become a common
+
+2
+00:00:07,080 --> 00:00:08,080
+question.
+
+3
+00:00:08,080 --> 00:00:10,560
+Is reactive programming dead?
+
+4
+00:00:10,560 --> 00:00:16,360
+First of all, we have to understand one thing that people have been saying, JAWI is going
+
+5
+00:00:16,360 --> 00:00:19,400
+to be dead for 20 years.
+
+6
+00:00:19,400 --> 00:00:21,320
+Is Java dead?
+
+7
+00:00:21,320 --> 00:00:26,280
+Java is more than 25 years old and V Java developers will love Java.
+
+8
+00:00:26,320 --> 00:00:32,040
+The concepts like sealed classes, sealed interfaces, record, record patterns, virtual
+
+9
+00:00:32,040 --> 00:00:33,640
+thread, etc.
+
+10
+00:00:33,640 --> 00:00:36,280
+Other modern programming languages, they already have.
+
+11
+00:00:36,280 --> 00:00:42,440
+Java team, they have been trained to add all these things one by one for us.
+
+12
+00:00:42,440 --> 00:00:46,720
+This virtual thread project, the project loop was going on for many years.
+
+13
+00:00:46,720 --> 00:00:51,320
+The main goal of virtual thread is not to compete with the reactive programming.
+
+14
+00:00:51,320 --> 00:00:57,200
+The thread will be helpful to make use of the system resources like CPU more efficiently.
+
+15
+00:00:57,200 --> 00:01:01,600
+We will also get the non-blocking Iowa benefits behind the scenes.
+
+16
+00:01:01,600 --> 00:01:07,520
+Now this is where the question arises that if I can get the non-blocking Iowa benefit via
+
+17
+00:01:07,520 --> 00:01:11,240
+virtual thread, then why do we need reactive programming?
+
+18
+00:01:11,240 --> 00:01:13,080
+It should be dead, right?
+
+19
+00:01:13,080 --> 00:01:19,480
+I understand the question, but it is wrong to think that the whole point of reactive programming
+
+20
+00:01:19,480 --> 00:01:23,080
+is to achieve non-blocking Iowa.
+
+21
+00:01:23,080 --> 00:01:28,520
+We also have structured concurrency, but currently it is in the preview and its goal is
+
+22
+00:01:28,520 --> 00:01:29,520
+different.
+
+23
+00:01:29,520 --> 00:01:35,120
+Whatever it is trying to solve is not anything to do with the reactive programming.
+
+24
+00:01:35,120 --> 00:01:38,040
+Then what is reactive programming?
+
+25
+00:01:38,040 --> 00:01:42,360
+Reactive programming is a programming paradigm, a special implementation of observer design
+
+26
+00:01:42,360 --> 00:01:43,360
+panel.
+
+27
+00:01:43,360 --> 00:01:45,560
+It is based on three pillars.
+
+28
+00:01:45,560 --> 00:01:51,480
+On blocking Iowa, stream based asynchronous communication with a bad pressure support.
+
+29
+00:01:51,480 --> 00:01:55,840
+We need a reactive programming to build reactive system.
+
+30
+00:01:55,840 --> 00:01:57,800
+We understand the first point.
+
+31
+00:01:57,800 --> 00:02:00,000
+Here we do not have any confusion.
+
+32
+00:02:00,000 --> 00:02:06,400
+In this video we can understand the second and third points by using an application, which
+
+33
+00:02:06,400 --> 00:02:12,320
+I think that it is the perfect example of reactive system.
+
+34
+00:02:12,320 --> 00:02:18,400
+For that Java has already enabled a reactive programming by introducing few interfaces,
+
+35
+00:02:18,400 --> 00:02:23,600
+a spot of the Java U-TIL concurrent package, the flow class.
+
+36
+00:02:23,600 --> 00:02:30,160
+We already have few libraries for reactive programming like reactor, RX, Java to Acastreams,
+
+37
+00:02:30,160 --> 00:02:31,160
+etc.
+
+38
+00:02:31,160 --> 00:02:37,280
+Currently they all use platform threads because that is what we have had before Java 21.
+
+39
+00:02:37,280 --> 00:02:43,880
+Now as part of Java 21, since we have virtual threads, these libraries might start using
+
+40
+00:02:43,880 --> 00:02:45,040
+virtual threads now.
+
+41
+00:02:45,040 --> 00:02:50,560
+As you see, the reactor, they have already updated to use virtual threads.
+
+42
+00:02:50,560 --> 00:02:56,520
+As you see now, these libraries, they are already going to get the benefit of virtual
+
+43
+00:02:56,520 --> 00:02:57,520
+threads.
+
+44
+00:02:57,520 --> 00:03:02,040
+Virtual thread is not going to kill reactive programming.
+
+45
+00:03:02,040 --> 00:03:07,760
+For the past 20-25 years, we have been traditionally programming like client server,
+
+46
+00:03:07,760 --> 00:03:09,480
+request, response.
+
+47
+00:03:09,480 --> 00:03:11,160
+This is how we see things.
+
+48
+00:03:11,160 --> 00:03:13,079
+This is how we have been coding.
+
+49
+00:03:13,079 --> 00:03:17,160
+But if we consider GRPC, R-Sacket, etc.
+
+50
+00:03:17,160 --> 00:03:22,200
+They can be a little bit interactive if we have used R-Sacket.
+
+51
+00:03:22,200 --> 00:03:26,560
+You will understand that it does not see that client and server.
+
+52
+00:03:26,560 --> 00:03:30,720
+It will be seeing this as a two different systems talking to one another.
+
+53
+00:03:30,760 --> 00:03:34,120
+It is something like two people talking over the phone.
+
+54
+00:03:34,120 --> 00:03:39,960
+The traditional synchronous blocking style code will not be helpful as it does not
+
+55
+00:03:39,960 --> 00:03:43,880
+provide the necessary tools for this communication.
+
+56
+00:03:43,880 --> 00:03:49,480
+This is why we need something slightly different, which is reactive programming.
+
+57
+00:03:49,480 --> 00:03:53,920
+Reactive programming is a tool to build reactive system.
+
+58
+00:03:53,920 --> 00:04:01,160
+Now let's take a look at the second and third points by using one popular application.
+
+59
+00:04:01,160 --> 00:04:03,480
+That application is chat-gpt.
+
+60
+00:04:03,480 --> 00:04:05,399
+Now I want you to observe this.
+
+61
+00:04:05,399 --> 00:04:08,560
+I am going to ask a simple question.
+
+62
+00:04:08,560 --> 00:04:10,640
+Let's see what it does.
+
+63
+00:04:10,640 --> 00:04:17,320
+As soon as I ask a question, it is trying to give me a response.
+
+64
+00:04:17,320 --> 00:04:22,919
+In the example what we just saw, the chat-gpt took almost seven seconds to provide me the
+
+65
+00:04:22,920 --> 00:04:24,440
+full response.
+
+66
+00:04:24,440 --> 00:04:30,040
+Now let's imagine we do the traditional synchronous blocking style programming.
+
+67
+00:04:30,040 --> 00:04:32,400
+You ask a question.
+
+68
+00:04:32,400 --> 00:04:37,640
+The answer will be prepared and it might take seven seconds.
+
+69
+00:04:37,640 --> 00:04:40,800
+Then we return the answer.
+
+70
+00:04:40,800 --> 00:04:43,280
+Now think about the user experience.
+
+71
+00:04:43,280 --> 00:04:44,560
+How it will be?
+
+72
+00:04:44,560 --> 00:04:46,040
+You ask a question.
+
+73
+00:04:46,040 --> 00:04:49,840
+For the next seven seconds, nothing is going to happen.
+
+74
+00:04:49,840 --> 00:04:52,800
+Then you get the response.
+
+75
+00:04:52,800 --> 00:04:54,240
+You are getting right?
+
+76
+00:04:54,240 --> 00:04:58,840
+Because this is how the traditional programming we are doing actually.
+
+77
+00:04:58,840 --> 00:05:03,760
+So we prepare the answer and we return the actual object.
+
+78
+00:05:03,760 --> 00:05:06,120
+The T object.
+
+79
+00:05:06,120 --> 00:05:12,920
+Because of this return type, whoever called this method, they will have to wait for this
+
+80
+00:05:12,920 --> 00:05:18,720
+method to complete till the answer is returned to the caller.
+
+81
+00:05:18,720 --> 00:05:25,160
+Now in the reactive programming, when someone calls this method, we do not block the
+
+82
+00:05:25,160 --> 00:05:26,160
+caller.
+
+83
+00:05:26,160 --> 00:05:28,120
+We immediately return something.
+
+84
+00:05:28,120 --> 00:05:29,840
+So that's something.
+
+85
+00:05:29,840 --> 00:05:32,760
+In the reactive programming, normally we call that publisher.
+
+86
+00:05:32,760 --> 00:05:38,760
+So the publisher you have to imagine is something like a pipe.
+
+87
+00:05:38,760 --> 00:05:44,240
+So as soon as the mother is invoked, we return the publisher.
+
+88
+00:05:44,240 --> 00:05:48,080
+Then we prepare the answer asynchronously.
+
+89
+00:05:48,080 --> 00:05:53,080
+Then we send the answer via that pipe as send when it's available.
+
+90
+00:05:53,080 --> 00:05:58,719
+In the traditional programming, you prepare the big answer and you send at once.
+
+91
+00:05:58,719 --> 00:06:04,599
+In the reactive programming, you send, you can send them as chunks as send when is available.
+
+92
+00:06:04,599 --> 00:06:09,520
+As send when you have something available, you can keep on sending them.
+
+93
+00:06:09,520 --> 00:06:13,200
+The reactive programming might still take seven seconds to prepare the answer.
+
+94
+00:06:13,200 --> 00:06:14,200
+That's fine.
+
+95
+00:06:14,360 --> 00:06:19,880
+The idea here is we do not block the caller and we provide something to the caller as send
+
+96
+00:06:19,880 --> 00:06:21,680
+when something is available.
+
+97
+00:06:21,680 --> 00:06:23,960
+Because of that, it will look responsive.
+
+98
+00:06:23,960 --> 00:06:30,159
+Now if you compare the, if you check the chat, GPD behavior, right, it didn't take seven
+
+99
+00:06:30,159 --> 00:06:35,120
+seconds and it didn't give me the complete response after seven seconds.
+
+100
+00:06:35,120 --> 00:06:40,000
+Instead, as send when something is available, it kept on sending to the screen.
+
+101
+00:06:40,000 --> 00:06:44,920
+So that we could see and the application looked responsive.
+
+102
+00:06:44,920 --> 00:06:47,480
+Completable feature is not reactive.
+
+103
+00:06:47,480 --> 00:06:51,920
+It's mainly because it cannot send stream of values.
+
+104
+00:06:51,920 --> 00:06:55,920
+Completable feature can provide only one value at a time.
+
+105
+00:06:55,920 --> 00:06:59,680
+You cannot send stream of values.
+
+106
+00:06:59,680 --> 00:07:03,880
+Now let's come back to chat GPD and I'm going to ask the same question and I'd like
+
+107
+00:07:03,880 --> 00:07:08,240
+to show another important feature actually.
+
+108
+00:07:08,240 --> 00:07:12,840
+So if I hit enter, now it's trying to give me something as usual.
+
+109
+00:07:12,840 --> 00:07:17,680
+I say stop and it stopped.
+
+110
+00:07:17,680 --> 00:07:25,200
+In the second example, I asked the question and chat GPD was giving me the stream of
+
+111
+00:07:25,200 --> 00:07:26,200
+answer.
+
+112
+00:07:26,200 --> 00:07:32,680
+It did not complete the answer fully, but as soon as I saw the rest endpoint one example,
+
+113
+00:07:32,680 --> 00:07:35,520
+I realized, oh, this is how I have to do.
+
+114
+00:07:35,520 --> 00:07:37,000
+Okay, I stopped.
+
+115
+00:07:37,000 --> 00:07:40,160
+So when I say stop, then it stopped.
+
+116
+00:07:40,160 --> 00:07:41,160
+You're getting right.
+
+117
+00:07:41,160 --> 00:07:44,680
+Sometimes you might not be interested in the complete response.
+
+118
+00:07:44,680 --> 00:07:48,360
+The complete response might take 30 seconds, 30 minutes.
+
+119
+00:07:48,360 --> 00:07:49,360
+Who knows?
+
+120
+00:07:49,360 --> 00:07:51,200
+So it might keep on sending the response.
+
+121
+00:07:51,200 --> 00:07:55,400
+However, you are actually satisfied with the partial response.
+
+122
+00:07:55,400 --> 00:07:59,280
+As soon as you received this response, immediately you're satisfied.
+
+123
+00:07:59,280 --> 00:08:00,880
+Yeah, this is what I need.
+
+124
+00:08:00,880 --> 00:08:01,880
+Stop.
+
+125
+00:08:01,880 --> 00:08:04,080
+So as soon as you say stop, it stopped.
+
+126
+00:08:04,080 --> 00:08:05,080
+You're getting right.
+
+127
+00:08:05,080 --> 00:08:09,680
+You have the ability to stop the execution whenever you like.
+
+128
+00:08:09,680 --> 00:08:15,760
+If you check the traditional programming, you will get the answer only after seven seconds
+
+129
+00:08:15,760 --> 00:08:17,520
+or only after 30 seconds.
+
+130
+00:08:17,520 --> 00:08:23,560
+So you cannot cancel because you cannot see anything until the answer arrives.
+
+131
+00:08:23,560 --> 00:08:24,840
+You are getting right.
+
+132
+00:08:24,840 --> 00:08:29,740
+But on the reactive programming, since we are sending the answer in chunks, the stream-based
+
+133
+00:08:29,740 --> 00:08:34,319
+communication, if you're already satisfied with the partial response, you can simply cancel
+
+134
+00:08:34,320 --> 00:08:41,000
+the execution so that this publisher does not have to do unnecessary work.
+
+135
+00:08:41,000 --> 00:08:42,560
+Let's come back to this one more time.
+
+136
+00:08:42,560 --> 00:08:44,800
+This time I have a different question to ask.
+
+137
+00:08:44,800 --> 00:08:47,200
+Show me the first 1000 prime numbers.
+
+138
+00:08:47,200 --> 00:08:48,920
+This is what I'm going to ask.
+
+139
+00:08:48,920 --> 00:08:50,560
+Let's see what it does.
+
+140
+00:08:50,560 --> 00:08:54,600
+So it's trying to give me all the prime numbers.
+
+141
+00:08:54,600 --> 00:08:58,680
+So let's observe this.
+
+142
+00:08:58,680 --> 00:09:05,839
+If you notice, it stopped at 282 and it did not give me the complete 1000 prime numbers.
+
+143
+00:09:05,839 --> 00:09:13,319
+Instead it stopped at 282 and it gives me issues this button saying that should I still
+
+144
+00:09:13,319 --> 00:09:14,920
+continue generating?
+
+145
+00:09:14,920 --> 00:09:16,760
+Am I still here?
+
+146
+00:09:16,760 --> 00:09:19,319
+This is how it behaves actually.
+
+147
+00:09:19,319 --> 00:09:26,439
+So if I want to see the answer further, I can click on it so that it's simply continues
+
+148
+00:09:26,440 --> 00:09:32,960
+from where it stopped, but it did not give me all the 1000 upfront.
+
+149
+00:09:32,960 --> 00:09:37,800
+If you sit and silently observe this, it will stop at some point.
+
+150
+00:09:37,800 --> 00:09:45,000
+Again, it stopped at 538 and if I want to continue, I can continue.
+
+151
+00:09:45,000 --> 00:09:52,560
+Why I wanted to show that example is mainly because that is what the back pressure is.
+
+152
+00:09:52,560 --> 00:09:58,439
+For example, in the traditional programming, again, we ask a question, we prepare the complete
+
+153
+00:09:58,439 --> 00:10:00,599
+response, then we provide.
+
+154
+00:10:00,599 --> 00:10:06,920
+In the reactive programming, since we do the stream based communication, just because the
+
+155
+00:10:06,920 --> 00:10:12,000
+caller asks, hey, can you generate 1 million items, the producer does not have to generate
+
+156
+00:10:12,000 --> 00:10:16,280
+all the 1 million items and the key parts sending them 1 by 1.
+
+157
+00:10:16,280 --> 00:10:19,800
+What if the caller is not using the response we are sending?
+
+158
+00:10:19,800 --> 00:10:25,800
+So this is what we are saying back pressure that is you keep on generating the response.
+
+159
+00:10:25,800 --> 00:10:33,280
+If you think that the caller is not using the response or is a slow consumer, the producer
+
+160
+00:10:33,280 --> 00:10:35,040
+will automatically stop.
+
+161
+00:10:35,040 --> 00:10:36,479
+That is the back pressure.
+
+162
+00:10:36,479 --> 00:10:40,400
+So it will not unnecessarily do any work.
+
+163
+00:10:40,400 --> 00:10:46,439
+The producer will automatically stop when it thinks that the consumer is not consuming
+
+164
+00:10:46,439 --> 00:10:47,760
+the items.
+
+165
+00:10:47,760 --> 00:10:51,000
+So this is something we can achieve in reactive programming.
+
+166
+00:10:51,000 --> 00:10:55,080
+In the traditional programming style, we cannot do that.
+
+167
+00:10:55,080 --> 00:11:02,000
+So in order for the producer to keep producing the items, the consumer also has to consume
+
+168
+00:11:02,000 --> 00:11:03,960
+the items at the same rate.
+
+169
+00:11:03,960 --> 00:11:08,800
+If the consumer is slow, the producer will stop producing and it will do something else.
+
+170
+00:11:08,800 --> 00:11:13,760
+Then it will start again only when the consumer is making some progress.
+
+171
+00:11:13,760 --> 00:11:17,040
+In this case, we clicked on the continued generating button.
+
+172
+00:11:17,040 --> 00:11:23,400
+So we kind of acknowledge or we kind of tell the chat GPD application tools keep producing.
+
+173
+00:11:23,400 --> 00:11:28,319
+Similarly, we have to acknowledge or we have to consume the items so that it will keep
+
+174
+00:11:28,319 --> 00:11:30,199
+producing.
+
+175
+00:11:30,199 --> 00:11:34,160
+Reactive programming is a tool to build reactive system.
+
+176
+00:11:34,160 --> 00:11:39,360
+So it does not have to be like two different methods in a class.
+
+177
+00:11:39,360 --> 00:11:41,680
+It can be completely two different systems.
+
+178
+00:11:41,680 --> 00:11:44,120
+The producer could be a database.
+
+179
+00:11:44,120 --> 00:11:49,040
+So you might want to execute a query for which it might be sending the response as a
+
+180
+00:11:49,040 --> 00:11:50,040
+stream.
+
+181
+00:11:50,040 --> 00:11:52,480
+You are getting right.
+
+182
+00:11:52,480 --> 00:11:57,420
+Now if you compare this with the virtual threads and the structured concurrency, definitely
+
+183
+00:11:57,420 --> 00:12:00,760
+virtual thread is going to help with the non-blocking Iwo.
+
+184
+00:12:00,760 --> 00:12:05,800
+However virtual thread or the structured concurrency is not going to help with the back pressure
+
+185
+00:12:05,800 --> 00:12:09,480
+or stream base the asynchronous communication.
+
+186
+00:12:09,480 --> 00:12:14,960
+When we say stream base the communication is something like a completely even driven architecture
+
+187
+00:12:14,960 --> 00:12:17,000
+or something like a Kafka stream.
+
+188
+00:12:17,000 --> 00:12:23,040
+If you ask like this, no it does not have to it does not have to be like that.
+
+189
+00:12:23,040 --> 00:12:30,160
+We can also use HTTP for example in spring the flux that is what we use right is HTTP.
+
+190
+00:12:30,160 --> 00:12:37,680
+But most of us we are still using HTTP 1.1 but spring the flux also supports HTTP 2
+
+191
+00:12:37,680 --> 00:12:43,739
+and the HTTP 2 we can have stream base the communication.
+
+192
+00:12:43,739 --> 00:12:48,920
+HTTP 2 is different rather than HTTP 1.1.
+
+193
+00:12:48,920 --> 00:12:52,800
+So we can have stream base the communication HTTP 2.
+

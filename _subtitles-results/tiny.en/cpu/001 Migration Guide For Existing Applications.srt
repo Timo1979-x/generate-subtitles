@@ -1,0 +1,180 @@
+1
+00:00:00,000 --> 00:00:06,600
+If we have been watching all the lectures sequentially one by one by this time you must
+
+2
+00:00:06,600 --> 00:00:09,920
+be comfortable with the virtual threads, congrats.
+
+3
+00:00:09,920 --> 00:00:15,920
+Now you will definitely want to migrate your existing application to use virtual threads.
+
+4
+00:00:15,920 --> 00:00:20,480
+We have to take certain steps, we have to be careful, so that is what this quick lecture
+
+5
+00:00:20,480 --> 00:00:22,280
+is about.
+
+6
+00:00:22,280 --> 00:00:25,320
+We have only few steps, not a lot.
+
+7
+00:00:25,320 --> 00:00:32,800
+We know that virtual threads are for Iwo task only, not for 100% pure compute task.
+
+8
+00:00:32,800 --> 00:00:38,600
+Here we are not going to get any benefit, so this is where we are going to get benefit.
+
+9
+00:00:38,600 --> 00:00:44,760
+So if your application has Iwo task, yeah, definitely you can use virtual threads.
+
+10
+00:00:44,760 --> 00:00:48,320
+Here it does not make any sense.
+
+11
+00:00:48,320 --> 00:00:51,040
+Check your application for synchronizer keyword.
+
+12
+00:00:51,040 --> 00:00:54,080
+The Java team said that it is a temporary issue.
+
+13
+00:00:54,080 --> 00:01:00,199
+In the future they might fix, but in Java 21 we have this issue, so we have to be careful
+
+14
+00:01:00,199 --> 00:01:03,440
+if you are planning to use virtual threads.
+
+15
+00:01:03,440 --> 00:01:08,520
+So double check your synchronizer, the method etc if you are doing Iwo operation.
+
+16
+00:01:08,520 --> 00:01:11,480
+In that case you have to use re-endrenedlock.
+
+17
+00:01:11,480 --> 00:01:14,320
+You have to update your code.
+
+18
+00:01:14,320 --> 00:01:19,840
+There is a very good chance that the third-party libraries might be using this who knows.
+
+19
+00:01:19,840 --> 00:01:26,080
+So you might want to run your application with this property to deduct the pin the threads.
+
+20
+00:01:26,080 --> 00:01:31,800
+If you see some pin the threads and it is not because of you, it is because of some library,
+
+21
+00:01:31,800 --> 00:01:37,440
+then you will have to see if they are providing any new updated version for Java 21.
+
+22
+00:01:37,440 --> 00:01:40,840
+In that case you might want to update the dependency as well.
+
+23
+00:01:40,840 --> 00:01:45,640
+The thread builder is not thread safe, but the thread builder is new anyway.
+
+24
+00:01:45,640 --> 00:01:50,960
+So if you are worrying about the existing application probably it is not applicable.
+
+25
+00:01:50,960 --> 00:01:54,800
+Thread factory is thread safe.
+
+26
+00:01:54,800 --> 00:01:59,200
+And the executive service if your application is using executive service, definitely you
+
+27
+00:01:59,200 --> 00:02:05,040
+might be using one of these implementation because that is what we have had so far.
+
+28
+00:02:05,040 --> 00:02:09,680
+So but all these implementations they all will pool threads.
+
+29
+00:02:09,680 --> 00:02:14,800
+That is how they all have been implemented because it is for platform threads and the platform
+
+30
+00:02:14,800 --> 00:02:16,880
+thread sets and expensive resource.
+
+31
+00:02:16,880 --> 00:02:19,560
+So it makes sense to pool threads there.
+
+32
+00:02:19,560 --> 00:02:23,960
+But virtual thread is very cheap and it should not be pooled.
+
+33
+00:02:23,960 --> 00:02:28,400
+So do not pass the thread factory to these implementation.
+
+34
+00:02:28,400 --> 00:02:33,880
+So we have to use the thread per task executor to use virtual threads.
+
+35
+00:02:33,880 --> 00:02:37,240
+If we have to limit concurrency etc.
+
+36
+00:02:37,240 --> 00:02:40,960
+Then we have to use some of them.
+
+37
+00:02:40,960 --> 00:02:46,120
+Thread local will work with virtual thread somehow Java team they made it work with virtual
+
+38
+00:02:46,120 --> 00:02:47,120
+thread.
+
+39
+00:02:47,120 --> 00:02:52,080
+But double check if you really need it to use with the virtual threads do not store expensive
+
+40
+00:02:52,080 --> 00:02:55,400
+object because we can create millions of virtual threads right.
+
+41
+00:02:55,400 --> 00:02:59,360
+So I would say be extra careful here.
+
+42
+00:02:59,360 --> 00:03:04,240
+The spring team they will use thread local and they will know how to use etc.
+
+43
+00:03:04,240 --> 00:03:06,560
+So let us not worry about the framework.
+
+44
+00:03:06,560 --> 00:03:09,640
+If you are using directly in your code somewhere.
+
+45
+00:03:09,640 --> 00:03:12,920
+So here you have to be a little bit more careful.
+

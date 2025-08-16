@@ -1,0 +1,316 @@
+1
+00:00:00,000 --> 00:00:07,000
+You have completed this course. Assuming you have watched a whole lecture in the given order.
+
+2
+00:00:07,000 --> 00:00:12,000
+So what is next? Sometimes people will ask me my private message that,
+
+3
+00:00:12,000 --> 00:00:17,000
+hey we know can you suggest what I should learn next? Something like that.
+
+4
+00:00:17,000 --> 00:00:27,000
+I have created few courses and I can explain on what basis I created them so that you can pick the next topic which interest you.
+
+5
+00:00:27,000 --> 00:00:31,000
+Let's consider an application with the microservices or a detector here.
+
+6
+00:00:31,000 --> 00:00:35,000
+We have a bunch of services talking to one another like this.
+
+7
+00:00:35,000 --> 00:00:41,000
+Let's say we are receiving hundreds of thousands of freckwars per minute here.
+
+8
+00:00:41,000 --> 00:00:49,000
+How can we process all these freckwars more efficiently without launching or before horizontally scaling another instance?
+
+9
+00:00:49,000 --> 00:00:54,000
+How can we make use of the given CPU or memory properly?
+
+10
+00:00:54,000 --> 00:01:00,000
+Here we have two options. One is using Java virtual thread.
+
+11
+00:01:00,000 --> 00:01:05,000
+Java finally after many years they have introduced virtual threads.
+
+12
+00:01:05,000 --> 00:01:17,000
+Using virtual threads we write synchronous blocking style code but Java will do non blocking I.O. for us to process request more efficiently.
+
+13
+00:01:17,000 --> 00:01:20,000
+I have a course on that. Check that out.
+
+14
+00:01:20,000 --> 00:01:26,000
+Another option is developing reactive microservice with the spring vertex.
+
+15
+00:01:26,000 --> 00:01:35,000
+The whole reactive paradigm is kind of new different style of programming and reactive programming enables us to do stream based communication.
+
+16
+00:01:35,000 --> 00:01:40,000
+It is very hard to achieve with the synchronous blocking style code.
+
+17
+00:01:41,000 --> 00:01:51,000
+So by using either of these options we can develop on single microservice which should be capable of processing breakfast more efficiently.
+
+18
+00:01:51,000 --> 00:01:56,000
+Microservices are great. You see to develop test and deploy.
+
+19
+00:01:56,000 --> 00:02:03,000
+But when we create multiple microservices and we are talking to one another like this there will be network latency.
+
+20
+00:02:03,000 --> 00:02:10,000
+And it will affect the overall application processing time. How can we improve our backend communication?
+
+21
+00:02:10,000 --> 00:02:14,000
+For the backend communication I can suggest three options.
+
+22
+00:02:14,000 --> 00:02:19,000
+The one is GRPC created by Google. They have been using it for years.
+
+23
+00:02:19,000 --> 00:02:29,000
+It uses protocol buffers and HTTP2 to reduce the network latency and improve the application throughput, response time etc.
+
+24
+00:02:29,000 --> 00:02:40,000
+So this is great. You can check this out. The next one is our socket. It's almost same as this GRPC but it's reactive style.
+
+25
+00:02:40,000 --> 00:02:47,000
+This one is from Netflix. This is also great for the backend communication.
+
+26
+00:02:47,000 --> 00:02:56,000
+If you like messaging for the asynchronous communication among microservices then we can also go with Kafka.
+
+27
+00:02:56,000 --> 00:03:01,000
+We can compare these but before that let me clarify one thing.
+
+28
+00:03:01,000 --> 00:03:16,000
+What is stream based communication? Traditionally our programming style or our application communication will be like client will send a contract quest for which the server will give us one response back.
+
+29
+00:03:16,000 --> 00:03:19,000
+This is how normally we do things.
+
+30
+00:03:19,000 --> 00:03:27,000
+In the stream based communication it will be like two people talking to one another via phone.
+
+31
+00:03:27,000 --> 00:03:35,000
+The client will call the server once the connection is established they can exchange information continuously.
+
+32
+00:03:35,000 --> 00:03:39,000
+So we can design interactive application.
+
+33
+00:03:39,000 --> 00:03:45,000
+Now we can compare the various technologies or options we have for the backend communication.
+
+34
+00:03:45,000 --> 00:03:58,000
+If we want restful APIs we have two options. We can go with the spring web for the synchronous blocking style code and you will get request and response style programming but it's very hard to achieve stream based communication.
+
+35
+00:03:58,000 --> 00:04:08,000
+If we want stream based communication along with the restful APIs then we can go with the spring web flex that is where the reactive programming shines.
+
+36
+00:04:08,000 --> 00:04:16,000
+If we do not like rest or for the backend communication things do not have to be restful actually.
+
+37
+00:04:16,000 --> 00:04:32,000
+If we want low latency which I would highly encourage you to try these for the low latency communication we can have GRPC which will provide the request and response stream based communication etc.
+
+38
+00:04:32,000 --> 00:04:37,000
+Then we have our circuit same as this one but it's reactive.
+
+39
+00:04:37,000 --> 00:04:51,000
+GRPC uses HTTP2 it's a network level 7 or circuit is the custom protocol it uses network level 5 so because of that in theory our circuit should provide better performance compared to GRPC.
+
+40
+00:04:51,000 --> 00:04:59,000
+However GRPC is not really tied to HTTP2 in the future they might change the protocol as well.
+
+41
+00:04:59,000 --> 00:05:06,000
+So you can't go wrong with the either of these actually.
+
+42
+00:05:06,000 --> 00:05:12,000
+Then we have Kafka for the completely even driven asynchronous communication.
+
+43
+00:05:12,000 --> 00:05:15,000
+What about the communication with the front end.
+
+44
+00:05:15,000 --> 00:05:22,000
+We have browser and mobile application etc talk to the backend so what can we do here.
+
+45
+00:05:22,000 --> 00:05:31,000
+I can suggest GraphQL here to avoid some of the challenges with the restful APIs and for efficient data retrieval.
+
+46
+00:05:31,000 --> 00:05:35,000
+I have one dedicated course on GraphQL check that out.
+
+47
+00:05:35,000 --> 00:05:45,000
+Particularly for mobile applications the GRPC and the R circuit can also work great here as their lightweight.
+
+48
+00:05:45,000 --> 00:05:52,000
+Then what else I can do to improve my application throughput and reduce redundant work.
+
+49
+00:05:52,000 --> 00:06:01,000
+We can also add radius which is high performance caching layer which provides super fast read write operations.
+
+50
+00:06:01,000 --> 00:06:03,000
+We can add radius in our target.
+
+51
+00:06:03,000 --> 00:06:07,000
+To improve the application throughput and the response time.
+
+52
+00:06:07,000 --> 00:06:14,000
+It can also provide features like Pub sub messaging distributed locking among microservices.
+
+53
+00:06:14,000 --> 00:06:20,000
+We have to be careful when we design our application anything could happen in the network.
+
+54
+00:06:20,000 --> 00:06:26,000
+One service might be very slow or one service might fail suddenly.
+
+55
+00:06:26,000 --> 00:06:31,000
+The problem in one service should not propagate everywhere.
+
+56
+00:06:31,000 --> 00:06:37,000
+It is always our responsibility to design our application to be highly resilient.
+
+57
+00:06:37,000 --> 00:06:44,000
+There are some techniques design patterns we can follow to develop highly resilient application.
+
+58
+00:06:44,000 --> 00:06:54,000
+I have documented that in this course microservices design patterns integration and resilient design patterns for microservices architecture.
+
+59
+00:06:54,000 --> 00:06:56,000
+What about testing?
+
+60
+00:06:56,000 --> 00:07:02,000
+I have a course on Selenium the running automated U8 test via CICD pipeline.
+
+61
+00:07:02,000 --> 00:07:08,000
+I use Jenkins in this course you can check that out if you are interested.
+
+62
+00:07:08,000 --> 00:07:13,000
+Okay we have developed our application which is scalable performance etc.
+
+63
+00:07:13,000 --> 00:07:15,000
+So what about deployment?
+
+64
+00:07:15,000 --> 00:07:16,000
+Service discovery.
+
+65
+00:07:16,000 --> 00:07:20,000
+Here I would suggest Docker under Kubernetes.
+
+66
+00:07:20,000 --> 00:07:23,000
+Docker is a must know tool if you ask me.
+
+67
+00:07:23,000 --> 00:07:35,000
+If you have never tried Docker you will be amazed how it can increase our productivity by quickly spinning up the dependent application like databases or other applications for local development.
+
+68
+00:07:35,000 --> 00:07:40,000
+It is easy to package deploy share applications via Docker.
+
+69
+00:07:40,000 --> 00:07:43,000
+Kubernetes is for orchestration.
+
+70
+00:07:43,000 --> 00:07:52,000
+For service discovery load balancing, rolling update, rollback, configuration management, another super important feature or to scaling.
+
+71
+00:07:52,000 --> 00:08:02,000
+We definitely should not want to lock ourselves with one particular cloud provider like AWS or GCP etc.
+
+72
+00:08:02,000 --> 00:08:10,000
+Kubernetes is the way to develop applications which can provide multi cloud support.
+
+73
+00:08:10,000 --> 00:08:13,000
+I have one course on this Kubernetes.
+
+74
+00:08:13,000 --> 00:08:22,000
+We will learn Kubernetes in the end you will see in less than 10 minutes we will run our application on GCP cloud without doing much.
+
+75
+00:08:22,000 --> 00:08:29,000
+Auto-scaling service discovery etc. will work just out of the box with the Kubernetes configuration.
+
+76
+00:08:29,000 --> 00:08:34,000
+To quickly summarize these are the topics for which I have courses for now.
+
+77
+00:08:34,000 --> 00:08:37,000
+Pass this video if you want to review.
+
+78
+00:08:37,000 --> 00:08:48,000
+Once you picked up the next topic if you go to my profile in this e-mail platform then you should be able to find all the courses.
+
+79
+00:08:48,000 --> 00:08:51,000
+Thanks and I'll see you soon.
+

@@ -1,0 +1,132 @@
+1
+00:00:00,000 --> 00:00:06,580
+If you have been watching all the lectures sequentially one by one by this time you must
+
+2
+00:00:06,580 --> 00:00:12,480
+be comfortable with the virtual threads. Congrats! Now you will definitely want to migrate your
+
+3
+00:00:12,480 --> 00:00:17,560
+existing application to use virtual threads. We have to take certain steps, we have to
+
+4
+00:00:17,560 --> 00:00:22,280
+be careful. So that is what this quick lecture is about.
+
+5
+00:00:22,280 --> 00:00:29,880
+We have only few steps, not a lot. We know that virtual threads are for IOTask only,
+
+6
+00:00:29,880 --> 00:00:36,440
+not for 100% pure compute task. Here we are not going to get any benefit. So this is where
+
+7
+00:00:36,440 --> 00:00:43,640
+we are going to get benefit. So if your application has IOTask, yeah definitely you can use virtual
+
+8
+00:00:43,640 --> 00:00:48,360
+threads. Here it does not make any sense.
+
+9
+00:00:48,360 --> 00:00:53,080
+Double check your application for synchronized keyword. The Java team said that it is a temporary
+
+10
+00:00:53,080 --> 00:00:59,640
+issue in the future they might fix. But in Java 21 we have this issue so we have to be
+
+11
+00:00:59,640 --> 00:01:05,519
+careful if you are planning to use virtual threads. So double check your synchronized
+
+12
+00:01:05,519 --> 00:01:11,480
+the method etc if you are doing IO operation. In that case you have to use re-end run block.
+
+13
+00:01:11,480 --> 00:01:17,180
+You have to update your code. There is a very good chance that the third party libraries
+
+14
+00:01:17,180 --> 00:01:22,060
+they might be using this who knows. So you might want to run your application with this
+
+15
+00:01:22,060 --> 00:01:28,420
+property to detect the pinned threads. If you see some pinned threads and it is not
+
+16
+00:01:28,420 --> 00:01:34,060
+because of you, it is because of some library then you will have to see if they are providing
+
+17
+00:01:34,060 --> 00:01:39,460
+any new updated version for Java 21. In that case you might want to update the dependency
+
+18
+00:01:39,460 --> 00:01:45,600
+as well. The thread builder is not thread safe but the thread builder is new anyway.
+
+19
+00:01:45,600 --> 00:01:50,919
+So if you are worrying about the existing application probably it is not applicable.
+
+20
+00:01:50,919 --> 00:01:58,119
+Thread factory is thread safe. And the executor service if your application is using executor
+
+21
+00:01:58,119 --> 00:02:01,840
+service definitely you might be using one of these implementation because that is what
+
+22
+00:02:01,840 --> 00:02:10,600
+we have had so far. But all these implementations they all will pull threads. That is how they
+
+23
+00:02:10,600 --> 00:02:15,040
+all have been implemented because it is for platform threads and the platform threads
+
+24
+00:02:15,040 --> 00:02:20,820
+is an expensive resource so it makes sense to pull threads there. But virtual thread
+
+25
+00:02:20,820 --> 00:02:27,000
+is very cheap and it should not be pulled. So do not pass the thread factory to these
+
+26
+00:02:27,000 --> 00:02:33,880
+implementation. So we have to use the thread per task executor to use virtual threads.
+
+27
+00:02:33,880 --> 00:02:40,959
+If we have to limit concurrency etc then we have to use some of them.
+
+28
+00:02:40,960 --> 00:02:45,880
+Thread local will work with the virtual thread somehow Java team they made it work with the
+
+29
+00:02:45,880 --> 00:02:50,520
+virtual thread but double check if you really need it to use with the virtual threads. Do
+
+30
+00:02:50,520 --> 00:02:55,360
+not store expensive object because we can create millions of virtual threads right.
+
+31
+00:02:55,360 --> 00:03:02,280
+So I would say be extra careful here. The spring team they will use thread local and
+
+32
+00:03:02,280 --> 00:03:07,160
+they will know how to use etc. So let's not worry about the framework. If you are using
+
+33
+00:03:07,160 --> 00:03:12,880
+directly in your code somewhere so here you have to be a little bit more careful.
+

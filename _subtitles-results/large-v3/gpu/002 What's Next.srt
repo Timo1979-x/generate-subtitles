@@ -1,0 +1,636 @@
+1
+00:00:00,000 --> 00:00:06,480
+You have completed this course assuming you have watched all the lectures in the given order.
+
+2
+00:00:06,480 --> 00:00:11,520
+So what is next? Sometimes people will ask me via private message that
+
+3
+00:00:11,520 --> 00:00:16,080
+Hey Vinoth, can you suggest what I should learn next? Something like that.
+
+4
+00:00:16,080 --> 00:00:22,020
+I have created few courses and I can explain on what basis I created them
+
+5
+00:00:22,020 --> 00:00:26,120
+so that you can pick the next topic which interests you.
+
+6
+00:00:26,120 --> 00:00:31,120
+Let's consider an application with microservices architecture here.
+
+7
+00:00:31,120 --> 00:00:35,120
+We have a bunch of services talking to one another like this.
+
+8
+00:00:35,120 --> 00:00:41,120
+Let's say we are receiving hundreds of thousands of requests per minute here.
+
+9
+00:00:41,120 --> 00:00:49,120
+How can we process all these requests more efficiently without launching or before horizontally scaling another instance?
+
+10
+00:00:49,120 --> 00:00:54,120
+How can we make use of the given CPU or memory properly?
+
+11
+00:00:54,120 --> 00:00:56,120
+Here we have two options.
+
+12
+00:00:56,120 --> 00:00:59,120
+One is using Java Virtual Thread.
+
+13
+00:00:59,120 --> 00:01:04,120
+Java finally after many years they have introduced virtual threads.
+
+14
+00:01:04,120 --> 00:01:09,120
+Using virtual threads we write synchronous blocking style code.
+
+15
+00:01:09,120 --> 00:01:16,120
+But Java will do non-blocking I.O for us to process requests more efficiently.
+
+16
+00:01:16,120 --> 00:01:19,120
+I have a course on that. Check that out.
+
+17
+00:01:19,120 --> 00:01:25,120
+Another option is developing reactive microservice with Spring Web Flex.
+
+18
+00:01:25,120 --> 00:01:26,120
+The whole process is done.
+
+19
+00:01:26,120 --> 00:01:29,120
+This whole reactive paradigm is kind of new.
+
+20
+00:01:29,120 --> 00:01:35,120
+Different style of programming and reactive programming enables us to do stream-based communication.
+
+21
+00:01:35,120 --> 00:01:40,120
+It's very hard to achieve with the synchronous blocking style code.
+
+22
+00:01:40,120 --> 00:01:46,120
+So by using either of these options we can develop one single microservice
+
+23
+00:01:46,120 --> 00:01:51,120
+which should be capable of processing requests more efficiently.
+
+24
+00:01:51,120 --> 00:01:55,120
+Microservices are great. Easy to develop, test and deploy.
+
+25
+00:01:55,120 --> 00:02:01,120
+But when we create multiple microservices and talking to one another like this,
+
+26
+00:02:01,120 --> 00:02:07,120
+there will be network latency and it will affect the overall application processing time.
+
+27
+00:02:07,120 --> 00:02:10,120
+How can we improve our back-end communication?
+
+28
+00:02:10,120 --> 00:02:14,120
+For the back-end communication I can suggest three options.
+
+29
+00:02:14,120 --> 00:02:18,120
+The one is gRPC created by Google.
+
+30
+00:02:18,120 --> 00:02:20,120
+They have been using it for years.
+
+31
+00:02:20,120 --> 00:02:24,120
+It uses protocol buffers and HTTP2 to reduce the network latency.
+
+32
+00:02:24,120 --> 00:02:29,120
+And they improve the application throughput, response time, etc.
+
+33
+00:02:29,120 --> 00:02:32,120
+So this is great. You can check this out.
+
+34
+00:02:32,120 --> 00:02:34,120
+The next one is Rsocket.
+
+35
+00:02:34,120 --> 00:02:40,120
+It's almost same as this gRPC but it's reactive style.
+
+36
+00:02:40,120 --> 00:02:43,120
+This one is from Netflix.
+
+37
+00:02:43,120 --> 00:02:47,120
+This is also great for the back-end communication.
+
+38
+00:02:47,120 --> 00:02:53,120
+If you like messaging for the asynchronous communication among microservices,
+
+39
+00:02:53,120 --> 00:02:56,120
+then we can also go with Kafka.
+
+40
+00:02:56,120 --> 00:03:01,120
+We can compare these but before that let me clarify one thing.
+
+41
+00:03:01,120 --> 00:03:04,120
+What is stream-based communication?
+
+42
+00:03:04,120 --> 00:03:09,120
+Traditionally our programming style or our application communication will be like
+
+43
+00:03:09,120 --> 00:03:16,120
+client will send one request for which the server will give us one response back.
+
+44
+00:03:16,120 --> 00:03:19,120
+This is how normally we do things.
+
+45
+00:03:19,120 --> 00:03:21,120
+In the stream-based communication,
+
+46
+00:03:21,120 --> 00:03:27,120
+it will be like two people talking to one another via phone.
+
+47
+00:03:27,120 --> 00:03:30,120
+The client will call the server.
+
+48
+00:03:30,120 --> 00:03:32,120
+Once the connection is established,
+
+49
+00:03:32,120 --> 00:03:36,120
+they can exchange information continuously.
+
+50
+00:03:36,120 --> 00:03:39,120
+So we can design interactive application.
+
+51
+00:03:39,120 --> 00:03:45,120
+Now we can compare the various technologies or options we have for the back-end communication.
+
+52
+00:03:45,120 --> 00:03:48,120
+If we want restful APIs, we have two options.
+
+53
+00:03:48,120 --> 00:03:50,120
+We can go with the Spring Web
+
+54
+00:03:50,120 --> 00:03:55,120
+for the synchronous blocking style code and you will get request and response style programming.
+
+55
+00:03:55,120 --> 00:03:58,120
+But it's very hard to achieve stream-based communication.
+
+56
+00:03:58,120 --> 00:04:02,120
+If you want stream-based communication along with the restful APIs,
+
+57
+00:04:02,120 --> 00:04:04,120
+then we can go with the Spring Webflex.
+
+58
+00:04:04,120 --> 00:04:07,120
+That is where the reactive programming shines.
+
+59
+00:04:07,120 --> 00:04:13,120
+If you do not like rest or for the back-end communication,
+
+60
+00:04:13,120 --> 00:04:16,120
+things do not have to be restful actually.
+
+61
+00:04:16,120 --> 00:04:18,120
+If you want low latency,
+
+62
+00:04:18,120 --> 00:04:20,120
+which I would highly encourage,
+
+63
+00:04:20,120 --> 00:04:25,120
+you to try these for the low latency communication,
+
+64
+00:04:25,120 --> 00:04:27,120
+we can have gRPC,
+
+65
+00:04:27,120 --> 00:04:29,120
+which will provide the request and response,
+
+66
+00:04:29,120 --> 00:04:32,120
+stream-based communication, etc.
+
+67
+00:04:32,120 --> 00:04:35,120
+Then we have Rsocket, same as this one,
+
+68
+00:04:35,120 --> 00:04:37,120
+but it's reactive.
+
+69
+00:04:37,120 --> 00:04:39,120
+gRPC uses HTTP2.
+
+70
+00:04:39,120 --> 00:04:41,120
+It's a network level 7.
+
+71
+00:04:41,120 --> 00:04:43,120
+Rsocket is the custom protocol.
+
+72
+00:04:43,120 --> 00:04:45,120
+It uses network level 5.
+
+73
+00:04:45,120 --> 00:04:47,120
+So because of that, in theory,
+
+74
+00:04:47,120 --> 00:04:49,120
+Rsocket should provide better performance
+
+75
+00:04:49,120 --> 00:04:51,120
+compared to gRPC.
+
+76
+00:04:51,120 --> 00:04:55,120
+However, gRPC is not really tied to HTTP2.
+
+77
+00:04:55,120 --> 00:04:59,120
+In the future, they might change the protocol as well.
+
+78
+00:04:59,120 --> 00:05:05,120
+So you can't go wrong with either of these actually.
+
+79
+00:05:05,120 --> 00:05:12,120
+Then we have Kafka for the completely even driven asynchronous communication.
+
+80
+00:05:12,120 --> 00:05:15,120
+What about the communication with the front-end?
+
+81
+00:05:15,120 --> 00:05:18,120
+We have browser and mobile application, etc.
+
+82
+00:05:18,120 --> 00:05:19,120
+Talk to the back-end.
+
+83
+00:05:19,120 --> 00:05:21,120
+So what can we do here?
+
+84
+00:05:21,120 --> 00:05:24,120
+I can suggest GraphQL here
+
+85
+00:05:24,120 --> 00:05:27,120
+to avoid some of the challenges with the RESTful APIs
+
+86
+00:05:27,120 --> 00:05:30,120
+and for efficient data retrieval.
+
+87
+00:05:30,120 --> 00:05:33,120
+I have one dedicated course on GraphQL.
+
+88
+00:05:33,120 --> 00:05:35,120
+Check that out.
+
+89
+00:05:35,120 --> 00:05:37,120
+Particularly for mobile applications,
+
+90
+00:05:37,120 --> 00:05:43,120
+the gRPC and Rsocket can also work great here
+
+91
+00:05:43,120 --> 00:05:45,120
+as they are lightweight.
+
+92
+00:05:45,120 --> 00:05:47,120
+Then what else I can do
+
+93
+00:05:47,120 --> 00:05:49,120
+to improve my application throughput
+
+94
+00:05:49,120 --> 00:05:51,120
+and reduce redundant work?
+
+95
+00:05:51,120 --> 00:05:54,120
+We can also add Redis,
+
+96
+00:05:54,120 --> 00:05:57,120
+which is high-performance caching layer,
+
+97
+00:05:57,120 --> 00:06:00,120
+which provides super-fast read-write operations.
+
+98
+00:06:00,120 --> 00:06:03,120
+We can add Redis in our architecture
+
+99
+00:06:03,120 --> 00:06:05,120
+to improve the application throughput
+
+100
+00:06:05,120 --> 00:06:07,120
+and the response time.
+
+101
+00:06:07,120 --> 00:06:10,120
+It can also provide features like pub-sub messaging,
+
+102
+00:06:10,120 --> 00:06:14,120
+distributed locking among microservices.
+
+103
+00:06:14,120 --> 00:06:17,120
+We have to be careful when we design our application
+
+104
+00:06:17,120 --> 00:06:19,120
+because it is a very complex application.
+
+105
+00:06:19,120 --> 00:06:21,120
+Anything could happen in the network.
+
+106
+00:06:21,120 --> 00:06:23,120
+One service might be very slow
+
+107
+00:06:23,120 --> 00:06:26,120
+or one service might fail suddenly.
+
+108
+00:06:26,120 --> 00:06:31,120
+The problem in one service should not propagate everywhere.
+
+109
+00:06:31,120 --> 00:06:34,120
+It is always our responsibility
+
+110
+00:06:34,120 --> 00:06:38,120
+to design our application to be highly resilient.
+
+111
+00:06:38,120 --> 00:06:41,120
+There are some techniques, design patterns,
+
+112
+00:06:41,120 --> 00:06:45,120
+we can follow to develop highly resilient application.
+
+113
+00:06:45,120 --> 00:06:47,120
+We have done that in this course,
+
+114
+00:06:47,120 --> 00:06:50,120
+microservices design patterns,
+
+115
+00:06:50,120 --> 00:06:52,120
+integration and resilient design patterns
+
+116
+00:06:52,120 --> 00:06:54,120
+for microservices architecture.
+
+117
+00:06:54,120 --> 00:06:56,120
+What about testing?
+
+118
+00:06:56,120 --> 00:06:58,120
+I have a course on Selenium,
+
+119
+00:06:58,120 --> 00:07:02,120
+the running automated UI test via CICD pipeline.
+
+120
+00:07:02,120 --> 00:07:05,120
+I use Jenkins in this course.
+
+121
+00:07:05,120 --> 00:07:08,120
+You can check that out if you are interested.
+
+122
+00:07:08,120 --> 00:07:11,120
+Okay, we have developed our application,
+
+123
+00:07:11,120 --> 00:07:13,120
+which is scalable, performant, etc.
+
+124
+00:07:13,120 --> 00:07:15,120
+So what about deployment?
+
+125
+00:07:15,120 --> 00:07:17,120
+What about service discovery?
+
+126
+00:07:17,120 --> 00:07:20,120
+Here, I would suggest Docker and Kubernetes.
+
+127
+00:07:20,120 --> 00:07:23,120
+Docker is a must-know tool if you ask me.
+
+128
+00:07:23,120 --> 00:07:25,120
+If you have never tried Docker,
+
+129
+00:07:25,120 --> 00:07:28,120
+you will be amazed how it can increase our productivity
+
+130
+00:07:28,120 --> 00:07:31,120
+by quickly spinning up the dependent application
+
+131
+00:07:31,120 --> 00:07:35,120
+like databases or other applications for local development.
+
+132
+00:07:35,120 --> 00:07:40,120
+It is easy to package, deploy, share applications via Docker.
+
+133
+00:07:40,120 --> 00:07:43,120
+Kubernetes is for orchestration.
+
+134
+00:07:43,120 --> 00:07:44,120
+For service discovery,
+
+135
+00:07:44,120 --> 00:07:46,120
+load balancing, rolling update,
+
+136
+00:07:46,120 --> 00:07:48,120
+rollback, configuration management,
+
+137
+00:07:48,120 --> 00:07:52,120
+another super important feature, autoscaling.
+
+138
+00:07:52,120 --> 00:07:56,120
+We definitely should not want to lock ourselves
+
+139
+00:07:56,120 --> 00:08:02,120
+with one particular cloud provider like AWS or GCP, etc.
+
+140
+00:08:02,120 --> 00:08:06,120
+Kubernetes is the way to develop applications
+
+141
+00:08:06,120 --> 00:08:10,120
+which can provide multi-cloud support.
+
+142
+00:08:10,120 --> 00:08:12,120
+I have one course on this Kubernetes.
+
+143
+00:08:12,120 --> 00:08:13,120
+We will learn Kubernetes
+
+144
+00:08:13,120 --> 00:08:15,120
+in the end, you will see.
+
+145
+00:08:15,120 --> 00:08:17,120
+In less than 10 minutes,
+
+146
+00:08:17,120 --> 00:08:20,120
+we will run our application on GCP cloud
+
+147
+00:08:20,120 --> 00:08:22,120
+without doing much.
+
+148
+00:08:22,120 --> 00:08:24,120
+Autoscaling, service discovery, etc.
+
+149
+00:08:24,120 --> 00:08:26,120
+will work just out of the box
+
+150
+00:08:26,120 --> 00:08:28,120
+with the Kubernetes configuration.
+
+151
+00:08:29,120 --> 00:08:30,120
+To quickly summarize,
+
+152
+00:08:30,120 --> 00:08:33,120
+these are the topics for which I have courses for now.
+
+153
+00:08:33,120 --> 00:08:36,120
+Pause this video if you want to review.
+
+154
+00:08:36,120 --> 00:08:39,120
+Once you picked up the next topic,
+
+155
+00:08:39,120 --> 00:08:42,120
+if you go to my profile in this Udemy page,
+
+156
+00:08:42,120 --> 00:08:44,120
+you will see the courses.
+
+157
+00:08:44,120 --> 00:08:47,120
+You will see the courses in this Udemy platform.
+
+158
+00:08:47,120 --> 00:08:50,120
+Then you should be able to find all the courses.
+
+159
+00:08:50,120 --> 00:08:52,120
+Thanks and I will see you soon.
+
