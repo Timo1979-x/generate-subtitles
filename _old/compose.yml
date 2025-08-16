@@ -1,34 +1,23 @@
 services:
   whisper-subtitles:
-    build: ./build
+    build: ./whisper-build
     # runtime: rocm  # Используем ROCm runtime
     environment:
-      # - DEVICE=cpu  # cpu или cuda:0. Если не указать, скрипт попытается использовать GPU, а если к нему нет доступа, то будет работать на CPU
-      - MODEL_SIZE=small.en # Доступные модели: 
-        # 'tiny.en', 'tiny', 'base.en', 'base', 'small.en','small', 
-        # 'medium.en', 'medium', 'large-v1', 'large-v2', 'large-v3', 'large', 'large-v3-turbo', 'turbo'
+      - DEVICE=cpu  # или cuda:0
+      - MODEL_SIZE=medium.en  # Модель Whisper (можно изменить на small.en, large-v3 и т. д.)
+      - INPUT_DIR=/input  # Папка с видеофайлами
       - AUDIO_TRACK_NUMBER=0 # номер извлекаемой звуковой дорожки (zero-based)
+      - CACHE_DIR=/cache # путь к кешу моделей. лучше не менять
       - SKIP_IF_EXISTS=True # не создавать субтитры, если файл субтитров уже существуют
     volumes:
       - /mnt/work/temp/for-subtitles:/input  # Монтируем папку с видео
       - whisper-cache:/cache  # Кеш моделей на хосте
-      - .:/mnt1
     devices:
-      # доступ к устройствам для AMD:
       - /dev/kfd  # Необходимо для ROCm
       - /dev/dri
-      # доступ к устройствам для NVidia:
-      # - /dev/nvidia0
-      # - /dev/nvidiactl
-      # - /dev/nvidia-uvm
     stdin_open: true
     tty: true
-    deploy:
-      resources:
-        limits:
-          memory: '0'  # Без ограничений RAM
-          cpus: '0'   # Без ограничений CPU
-
+    
     # Ниже идут параметры, скомпилированные из командной строки запуска docker со страницы https://hub.docker.com/r/rocm/pytorch
     group_add:
       - 44 # добавить группу video

@@ -1,0 +1,6 @@
+.venv/
+*.mp3
+*.mp4
+*.wav
+*.mkv
+*.avi
